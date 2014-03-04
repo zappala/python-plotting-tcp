@@ -16,7 +16,7 @@ the effectiveness of a TCP implementation. The plots are:
   to convert bytes to packets, and modded by 50 to wrap the graph
   horizontally.
 
-## Generation scripts:
+## Generation scripts
 
 * generate-rates.py
 * generate-queue.py
@@ -35,7 +35,7 @@ plotting works.
 These generate the graphs described above, using the data files created by
 the generation scripts.
 
-### Installation Requirements
+## Installation Requirements
 
 
 hese examples require the installation of matplotlib. You can easily
