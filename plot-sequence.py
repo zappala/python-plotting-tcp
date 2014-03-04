@@ -4,7 +4,9 @@ import sys
 import matplotlib
 from pylab import *
 
-# Class that parses a file of rates and plots a smoothed graph
+# Parses a file of rates and plot a sequence number graph. Black
+# squares indicate a sequence number being sent and dots indicate a
+# sequence number being ACKed.
 class Plotter:
     def __init__(self,file):
         """ Initialize plotter with a file name. """
@@ -43,9 +45,10 @@ class Plotter:
         ackY = []
         for (t,sequence,size) in self.data:
             x.append(t)
-            y.append(sequence % (1500*50))
+            y.append(sequence % (1000*50))
+            # pretend the ACK came 0.2 seconds later
             ackX.append(t + 0.2)
-            ackY.append(sequence % (1500*50))
+            ackY.append(sequence % (1000*50))
             
         
         scatter(x,y,marker='s',s=3)

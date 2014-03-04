@@ -4,7 +4,9 @@ import sys
 import matplotlib
 from pylab import *
 
-# Class that parses a file of rates and plots a smoothed graph
+# Parse a file of rates and plot a smoothed graph. The rate is smoothed
+# by summing all the bytes sent over a 1 second interval, and sliding
+# the window every 0.1 seconds.
 class Plotter:
     def __init__(self,file):
         """ Initialize plotter with a file name. """
@@ -24,10 +26,12 @@ class Plotter:
                 t,sequence,size = line.split()
             except:
                 continue
+            # append data to a list of tuples
             t = float(t)
             sequence = int(sequence)
             size = int(size)
             self.data.append((t,sequence,size))
+            # Keep track of the minimum and maximum time seen
             if not self.min_time or t < self.min_time:
                 self.min_time = t
             if not self.max_time or t > self.max_time:
